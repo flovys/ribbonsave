@@ -1,5 +1,5 @@
 @echo off
-title RibbonSave Launcher 🎀
+title RibbonSave
 echo ===================================================
 echo     🎀 RibbonSave - Starting Services... 🎀
 echo ===================================================

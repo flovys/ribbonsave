@@ -1,6 +1,6 @@
-# 🎀 RibbonSave — Coquette Pink Media Downloader
+# 🎀 RibbonSave — Media Downloader
 
-Aplikasi web modern berbasis full-stack untuk mengunduh video dan audio dari berbagai platform media sosial ternama dengan tema estetika **Coquette Pink Aesthetic**.
+Aplikasi web modern berbasis full-stack untuk mengunduh video dan audio dari berbagai platform media sosial ternama dengan tema estetika **Pink Aesthetic**.
 
 ![Theme](https://img.shields.io/badge/Theme-Coquette%20Pink-F48FB1?style=for-the-badge)
 ![Backend](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
@@ -56,7 +56,7 @@ Di dalam folder proyek ini sudah disediakan file launcher bernama **`run.bat`**.
 
 1. **Buka File Explorer** di laptop Anda.
 2. Masuk ke folder proyek:  
-   `C:\Users\fikri\TugasKampusDev\VideoMusicDownloader`
+   `VideoMusicDownloader`
 3. **Klik dua kali (Double-click)** pada file:
    ```text
    run.bat
@@ -76,7 +76,7 @@ Berikut isi script yang ada di dalam `run.bat`:
 
 ```bat
 @echo off
-title RibbonSave Launcher 🎀
+title RibbonSave
 echo ===================================================
 echo     🎀 RibbonSave - Starting Services... 🎀
 echo ===================================================
@@ -169,4 +169,4 @@ pm2 save
 
 ---
 
-<p align="center">Made with 💖 for RibbonSave — Happy Downloading! 🎀</p>
+<p align="center">Made by RibbonSave 🎀</p>
