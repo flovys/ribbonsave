@@ -46,6 +46,15 @@ def _patched_tt_parse_web(self, aweme_detail, webpage_url, video_id, extract_fla
     return res
 tiktok_mod.TikTokIE._parse_aweme_video_web = _patched_tt_parse_web
 
+# --- Patch TikTokVMIE: normalisasi URL hasil redirect shortlink (/photo/ -> /video/) ---
+_orig_tt_vm_extract = tiktok_mod.TikTokVMIE._real_extract
+def _patched_tt_vm_extract(self, url):
+    res = _orig_tt_vm_extract(self, url)
+    if isinstance(res, dict) and res.get('url'):
+        res['url'] = re.sub(r'(tiktok\.com/(?:@[^/]+/|video/|share/))photo/(\d+)', r'\g<1>video/\2', res['url'])
+    return res
+tiktok_mod.TikTokVMIE._real_extract = _patched_tt_vm_extract
+
 # --- Patch Twitter: ekstrak foto tweet beresolusi tinggi jika tidak ada video ---
 _orig_tw_extract = twitter_mod.TwitterIE._real_extract
 def _patched_tw_extract(self, url):
@@ -143,6 +152,21 @@ SUPPORTED_PLATFORMS = {
 def normalize_url(url: str) -> str:
     """Normalisasi format URL media sosial agar dikenali oleh yt-dlp."""
     url = url.strip()
+
+    # Resolving shortlinks (vt.tiktok.com, vm.tiktok.com, tiktok.com/t/, fb.watch, dll)
+    if re.search(r'(vt\.tiktok\.com|vm\.tiktok\.com|tiktok\.com/t/|fb\.watch|fb\.me|t\.co|bit\.ly)', url, re.I):
+        try:
+            req = urllib.request.Request(
+                url,
+                headers={"User-Agent": "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)"}
+            )
+            with urllib.request.urlopen(req, timeout=8) as resp:
+                resolved = resp.geturl()
+                if resolved:
+                    url = resolved
+        except Exception as e:
+            print(f"[RibbonSave] URL unshorten note: {e}")
+
     # Ubah format TikTok photo (/photo/ -> /video/) agar dikenali oleh TikTok extractor
     url = re.sub(r'(tiktok\.com/(?:@[^/]+/|video/|share/))photo/(\d+)', r'\g<1>video/\2', url)
     return url
