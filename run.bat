@@ -1,7 +1,7 @@
 @echo off
 title RibbonSave
 echo ===================================================
-echo     🎀 RibbonSave - Starting Services... 🎀
+echo      RibbonSave - Starting Services... 
 echo ===================================================
 echo.
 
