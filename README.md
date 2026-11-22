@@ -150,20 +150,20 @@ Jika Anda ingin menjalankan masing-masing server secara terpisah lewat terminal:
 
 ---
 
-## ☁️ Menjalankan di Server VPS (Linux PM2)
-
-Jika aplikasi ini dideploy ke server VPS Ubuntu menggunakan process manager **PM2**:
+## ☁️ Menjalankan di Server VPS
 
 ```bash
-# 1. Jalankan Backend
+# 1. Install Dependensi & Jalankan Backend via PM2
 cd ~/VideoMusicDownloader/backend
+pip install -r requirements.txt --break-system-packages
 pm2 start main.py --interpreter python3 --name "ribbonsave-backend"
 
-# 2. Jalankan Frontend
+# 2. Build Frontend (untuk dilayani langsung oleh DocumentRoot Apache2)
 cd ~/VideoMusicDownloader/frontend
-pm2 start npm --name "ribbonsave-frontend" -- run dev
+npm install
+npm run build
 
-# 3. Simpan state agar auto-start saat VPS reboot
+# 3. Simpan daftar proses agar otomatis jalan saat VPS reboot
 pm2 save
 ```
 
