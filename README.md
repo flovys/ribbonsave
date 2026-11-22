@@ -14,13 +14,13 @@ Aplikasi web modern berbasis full-stack untuk mengunduh video dan audio dari ber
   - Antarmuka *Glassmorphism* lembut dengan aksen warna *Blush Pink*, *Rose*, dan *Berry Pink*.
   - Tipografi elegan kombinasi font *Playfair Display* dan *Quicksand*.
   - Animasi pita bergoyang (*ribbon sway*), kilauan bintang (*sparkles* ✨), serta status unduhan interaktif.
-- 🎬 **Multi-Platform Support:**
-  - **YouTube:** Video hingga resolusi tinggi (1080p/720p/480p/360p) & konversi instan ke Audio MP3 (320kbps).
-  - **TikTok:** Unduh video jernih tanpa watermark (*No Watermark*).
-  - **Instagram:** Reels, video post, dan IG TV.
-  - **X / Twitter & Facebook:** Deteksi resolusi otomatis dan unduhan langsung.
-- ⚡ **Enkripsi & Challenge Solver:**
-  - Terintegrasi dengan `yt-dlp` terbaru, `deno`/`node` runtime solver, dan dukungan `cookies.txt` untuk melewati verifikasi bot YouTube.
+- 🎬 **Multi-Platform Media & Gambar Support:**
+  - **TikTok:** Unduh video tanpa watermark (*No Watermark*), audio MP3, serta foto slide/carousel.
+  - **Instagram:** Reels, video post, foto feed, dan carousel gambar HD.
+  - **X / Twitter:** Video, audio, dan gambar beresolusi tinggi.
+  - **Facebook:** Video reels, post, dan gambar.
+- 🖼️ **Unduh Gambar & Thumbnail HD:**
+  - Pilihan mengunduh cover art / thumbnail beresolusi tinggi (JPG/PNG) atau foto dari postingan.
 - 📜 **Riwayat Unduhan (Recent Downloads):**
   - Tersimpan aman di `localStorage` peramban Anda untuk akses cepat.
 
@@ -34,8 +34,7 @@ VideoMusicDownloader/
 ├── README.md                # Dokumentasi proyek ini
 ├── backend/
 │   ├── main.py              # Server FastAPI, streaming & integrasi yt-dlp
-│   ├── requirements.txt     # Dependensi Python
-│   └── cookies.txt          # (Opsional) Cookie YouTube untuk bypass bot check
+│   └── requirements.txt     # Dependensi Python
 └── frontend/
     ├── package.json         # Dependensi Node.js / React
     ├── vite.config.js       # Konfigurasi Vite & reverse-proxy API

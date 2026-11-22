@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Clock, ExternalLink, Trash2 } from 'lucide-react'
 
 const PLATFORM_EMOJI = {
-  youtube: '▶',
   tiktok: '♪',
   instagram: '📷',
   twitter: '𝕏',
@@ -18,6 +17,12 @@ function timeAgo(ts) {
   if (hours < 24) return `${hours}h ago`
   const days = Math.floor(hours / 24)
   return `${days}d ago`
+}
+
+function renderTypeLabel(type) {
+  if (type === 'image') return '🖼️ Gambar'
+  if (type === 'audio') return '🎵 Audio'
+  return '🎬 Video'
 }
 
 export default function RecentDownloads() {
@@ -71,7 +76,7 @@ export default function RecentDownloads() {
                   {item.title}
                 </p>
                 <p className="text-xs text-dusty-mauve/40">
-                  {item.type === 'audio' ? '🎵 Audio' : '🎬 Video'} · {timeAgo(item.timestamp)}
+                  {renderTypeLabel(item.type)} · {timeAgo(item.timestamp)}
                 </p>
               </div>
               <a

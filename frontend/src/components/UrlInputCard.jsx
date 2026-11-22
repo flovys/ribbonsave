@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { ClipboardPaste, X, Search, Sparkles } from 'lucide-react'
 
 const PLATFORM_BADGES = [
-  { name: 'YouTube', color: 'bg-red-100 text-red-500', icon: '▶' },
   { name: 'TikTok', color: 'bg-gray-100 text-gray-700', icon: '♪' },
   { name: 'Instagram', color: 'bg-purple-100 text-purple-500', icon: '📷' },
   { name: 'X / Twitter', color: 'bg-blue-100 text-blue-500', icon: '𝕏' },
@@ -84,7 +83,7 @@ export default function UrlInputCard({ onFetch, loading }) {
                 type="url"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
-                placeholder="Paste your video link here... 🌸"
+                placeholder="Paste your video or image link here... 🌸"
                 className="w-full px-5 py-3.5 pr-10 rounded-2xl border-2 border-pastel-pink/50
                            bg-white/90 text-dusty-mauve placeholder-dusty-mauve/40
                            font-body text-base
@@ -130,7 +129,7 @@ export default function UrlInputCard({ onFetch, loading }) {
             ) : (
               <>
                 <Search className="w-5 h-5" />
-                Fetch Video
+                Fetch Media
               </>
             )}
           </button>

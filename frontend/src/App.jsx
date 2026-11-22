@@ -32,20 +32,27 @@ function App() {
     }
   }
 
-  const handleDownload = async (url, formatId, type) => {
+  const handleDownload = async (url, formatId, type, imageUrl = null, title = null) => {
     setDownloading(true)
-    setDownloadProgress(type === 'audio' ? 'Extracting audio...' : 'Processing video...')
+    let progressMsg = 'Processing video...'
+    if (type === 'audio') progressMsg = 'Extracting audio...'
+    else if (type === 'image') progressMsg = 'Downloading image...'
+    setDownloadProgress(progressMsg)
 
     try {
       const response = await axios.post(
         `${API_BASE}/download`,
-        { url, format_id: formatId, type },
+        { url, format_id: formatId, type, image_url: imageUrl, title },
         { responseType: 'blob' }
       )
 
       // Extract filename from Content-Disposition header
       const contentDisposition = response.headers['content-disposition']
-      let filename = type === 'audio' ? 'audio.mp3' : 'video.mp4'
+      let defaultName = 'video.mp4'
+      if (type === 'audio') defaultName = 'audio.mp3'
+      else if (type === 'image') defaultName = 'image.jpg'
+      let filename = defaultName
+
       if (contentDisposition) {
         const utf8Match = contentDisposition.match(/filename\*=UTF-8''([^;]+)/i)
         if (utf8Match) {
