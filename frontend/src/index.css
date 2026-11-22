@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Global Styles === */
+body {
+  font-family: 'Quicksand', sans-serif;
+  color: #4A353D;
+  background-color: #FFF0F5;
+  background-image: radial-gradient(circle, #FCE4EC 1px, transparent 1px);
+  background-size: 24px 24px;
+  min-height: 100vh;
+}
+
+/* === Scrollbar Styling === */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF0F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #F8BBD0;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F48FB1;
+}
+
+/* === Selection === */
+::selection {
+  background-color: #F8BBD0;
+  color: #4A353D;
+}
+
+/* === Custom Utilities === */
+@layer utilities {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-pastel-pink/60 rounded-3xl;
+    box-shadow: 0 10px 30px rgba(244, 143, 177, 0.25);
+  }
+
+  .btn-primary {
+    @apply bg-rose-pink text-white font-semibold px-6 py-3 rounded-2xl
+           transition-all duration-300 ease-out
+           hover:bg-berry-pink hover:shadow-pink-hover
+           active:scale-95 focus:outline-none focus:ring-4 focus:ring-pastel-pink/50;
+  }
+
+  .btn-secondary {
+    @apply bg-pastel-pink/40 text-dusty-mauve font-medium px-4 py-2 rounded-xl
+           transition-all duration-300 ease-out
+           hover:bg-pastel-pink/70 active:scale-95;
+  }
+
+  .text-gradient-pink {
+    @apply bg-gradient-to-r from-rose-pink to-berry-pink bg-clip-text text-transparent;
+  }
+}
+
+/* === Animations === */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
