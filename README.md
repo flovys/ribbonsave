@@ -1,10 +1,11 @@
 # 🎀 RibbonSave — Media Downloader
 
-Aplikasi web modern berbasis full-stack untuk mengunduh video dan audio dari berbagai platform media sosial ternama dengan tema estetika **Pink Aesthetic**.
+Aplikasi web modern berbasis full-stack untuk mengunduh video, audio, dan foto/carousel dari berbagai platform media sosial ternama dengan tema estetika **Coquette Pink Aesthetic**.
 
 ![Theme](https://img.shields.io/badge/Theme-Coquette%20Pink-F48FB1?style=for-the-badge)
 ![Backend](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![Frontend](https://img.shields.io/badge/Frontend-React%20+%20Vite%20+%20Tailwind-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Version](https://img.shields.io/badge/Version-v1.4.0-EC407A?style=for-the-badge)
 
 ---
 
@@ -14,35 +15,46 @@ Aplikasi web modern berbasis full-stack untuk mengunduh video dan audio dari ber
   - Antarmuka *Glassmorphism* lembut dengan aksen warna *Blush Pink*, *Rose*, dan *Berry Pink*.
   - Tipografi elegan kombinasi font *Playfair Display* dan *Quicksand*.
   - Animasi pita bergoyang (*ribbon sway*), kilauan bintang (*sparkles* ✨), serta status unduhan interaktif.
-- 🎬 **Multi-Platform Media & Gambar Support:**
+- 🎬 **Multi-Platform Media & Video Support:**
   - **TikTok:** Unduh video tanpa watermark (*No Watermark*), audio MP3, serta foto slide/carousel.
   - **Instagram:** Reels, video post, foto feed, dan carousel gambar HD.
   - **X / Twitter:** Video, audio, dan gambar beresolusi tinggi.
-  - **Facebook:** Video reels, post, dan gambar.
-- 🖼️ **Unduh Gambar & Thumbnail HD:**
-  - Pilihan mengunduh cover art / thumbnail beresolusi tinggi (JPG/PNG) atau foto dari postingan.
+  - **Facebook:** Video reels, post, dan gambar/album.
+- 🖼️ **Ekstraksi Multi-Foto Universal & Preview Thumbnail (Baru ✨):**
+  - **TikTok:** Ekstraksi seluruh slide foto (*slideshow* / `imagePost`).
+  - **Instagram:** Ekstraksi seluruh foto postingan *carousel* resolusi HD.
+  - **X / Twitter:** Ekstraksi multi-gambar (hingga 4 foto per tweet) resolusi asli (`orig`).
+  - **Facebook:** Ekstraksi multi-foto album dan postingan foto Facebook HD.
+  - **Visual Thumbnail Preview:** Setiap slide foto di daftar unduhan kini memiliki cuplikan gambar visual nyata, nomor urut slide (`Slide X/N`), serta badge resolusi & format.
+  - **Interactive Lightbox Modal Preview:** Klik thumbnail mana pun untuk melihat foto ukuran penuh dengan navigasi slide (panah `←` / `→`) dan tombol unduh langsung.
+- 📦 **Tombol Universal "Download All (.ZIP)" (Baru ✨):**
+  - Banner kartu Coquette Pink otomatis tampil jika postingan memiliki lebih dari 1 foto.
+  - Pengunduhan paralel cepat multi-threaded (`ThreadPoolExecutor`) dengan penamaan terstruktur rapi (`Judul_01.jpg`, `Judul_02.jpg`, dst.).
+  - Mengemas seluruh slide foto ke dalam 1 berkas arsip `.ZIP` terkompresi secara instan dengan *streaming chunk* langsung ke browser.
+- 🎵 **Ekstraksi Audio MP3:**
+  - Pilihan mengunduh audio murni berkecepatan 320kbps dari video maupun slide musik.
 - 📜 **Riwayat Unduhan (Recent Downloads):**
-  - Tersimpan aman di `localStorage` peramban Anda untuk akses cepat.
+  - Tersimpan aman di `localStorage` peramban Anda untuk akses cepat, lengkap dengan label tipe (`🎬 Video`, `🎵 Audio`, `🖼️ Gambar`, dan `📦 Arsip Foto (.ZIP)`).
 
 ---
 
 ## 🏗️ Struktur Direktori Proyek
 
 ```text
-VideoMusicDownloader/
+ribbonsave/
 ├── run.bat                  # Script one-click launcher untuk Windows
 ├── README.md                # Dokumentasi proyek ini
 ├── backend/
-│   ├── main.py              # Server FastAPI, streaming & integrasi yt-dlp
+│   ├── main.py              # Server FastAPI, streaming chunk, ZIP packager & yt-dlp patch
 │   └── requirements.txt     # Dependensi Python
 └── frontend/
     ├── package.json         # Dependensi Node.js / React
     ├── vite.config.js       # Konfigurasi Vite & reverse-proxy API
     ├── tailwind.config.js   # Konfigurasi palet warna & tema coquette
     └── src/
-        ├── App.jsx          # Komponen utama aplikasi
+        ├── App.jsx          # Komponen utama aplikasi & handler unduhan ZIP
         ├── index.css        # Styling tema, gradasi, & scrollbar
-        └── components/      # Navbar, InputCard, ResultCard, Loading, Footer
+        └── components/      # Navbar, InputCard, ResultCard, Loading, Footer, RecentDownloads
 ```
 
 ---
@@ -55,7 +67,7 @@ Di dalam folder proyek ini sudah disediakan file launcher bernama **`run.bat`**.
 
 1. **Buka File Explorer** di laptop Anda.
 2. Masuk ke folder proyek:  
-   `VideoMusicDownloader`
+   `ribbonsave`
 3. **Klik dua kali (Double-click)** pada file:
    ```text
    run.bat
@@ -168,4 +180,4 @@ pm2 save
 
 ---
 
-<p align="center">Made by RibbonSave 🎀</p>
+<p align="center">Made with 💖 by RibbonSave 🎀</p>

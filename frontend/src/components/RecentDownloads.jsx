@@ -20,6 +20,7 @@ function timeAgo(ts) {
 }
 
 function renderTypeLabel(type) {
+  if (type === 'zip') return '📦 Arsip Foto (.ZIP)'
   if (type === 'image') return '🖼️ Gambar'
   if (type === 'audio') return '🎵 Audio'
   return '🎬 Video'

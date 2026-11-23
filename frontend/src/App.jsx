@@ -32,17 +32,29 @@ function App() {
     }
   }
 
-  const handleDownload = async (url, formatId, type, imageUrl = null, title = null) => {
+  const handleDownload = async (url, formatId, type, imageUrl = null, title = null, images = null) => {
     setDownloading(true)
     let progressMsg = 'Processing video...'
-    if (type === 'audio') progressMsg = 'Extracting audio...'
-    else if (type === 'image') progressMsg = 'Downloading image...'
+    if (type === 'audio') progressMsg = 'Extracting audio (MP3)... 🎵'
+    else if (type === 'image') progressMsg = 'Downloading image... 🖼️'
+    else if (type === 'zip') {
+      const count = images ? images.length : ''
+      progressMsg = `Mempersiapkan ZIP (${count ? `${count} foto` : 'semua foto'})... 🎀`
+    }
     setDownloadProgress(progressMsg)
 
     try {
+      let endpoint = `${API_BASE}/download`
+      let payload = { url, format_id: formatId, type, image_url: imageUrl, title, images }
+
+      if (type === 'zip') {
+        endpoint = `${API_BASE}/download-zip`
+        payload = { url, title, images }
+      }
+
       const response = await axios.post(
-        `${API_BASE}/download`,
-        { url, format_id: formatId, type, image_url: imageUrl, title },
+        endpoint,
+        payload,
         { responseType: 'blob' }
       )
 
@@ -51,6 +63,7 @@ function App() {
       let defaultName = 'video.mp4'
       if (type === 'audio') defaultName = 'audio.mp3'
       else if (type === 'image') defaultName = 'image.jpg'
+      else if (type === 'zip') defaultName = `${title ? title.slice(0, 50) : 'photos'}.zip`
       let filename = defaultName
 
       if (contentDisposition) {
