@@ -1,11 +1,10 @@
-# 🎀 RibbonSave — Media Downloader
+# RibbonSave — Media Downloader
 
 Aplikasi web modern berbasis full-stack untuk mengunduh video, audio, dan foto/carousel dari berbagai platform media sosial ternama dengan tema estetika **Coquette Pink Aesthetic**.
 
 ![Theme](https://img.shields.io/badge/Theme-Coquette%20Pink-F48FB1?style=for-the-badge)
 ![Backend](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![Frontend](https://img.shields.io/badge/Frontend-React%20+%20Vite%20+%20Tailwind-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Version](https://img.shields.io/badge/Version-v1.4.0-EC407A?style=for-the-badge)
 
 ---
 
@@ -20,14 +19,14 @@ Aplikasi web modern berbasis full-stack untuk mengunduh video, audio, dan foto/c
   - **Instagram:** Reels, video post, foto feed, dan carousel gambar HD.
   - **X / Twitter:** Video, audio, dan gambar beresolusi tinggi.
   - **Facebook:** Video reels, post, dan gambar/album.
-- 🖼️ **Ekstraksi Multi-Foto Universal & Preview Thumbnail (Baru ✨):**
+- 🖼️ **Ekstraksi Multi-Foto Universal & Preview Thumbnail:**
   - **TikTok:** Ekstraksi seluruh slide foto (*slideshow* / `imagePost`).
   - **Instagram:** Ekstraksi seluruh foto postingan *carousel* resolusi HD.
   - **X / Twitter:** Ekstraksi multi-gambar (hingga 4 foto per tweet) resolusi asli (`orig`).
   - **Facebook:** Ekstraksi multi-foto album dan postingan foto Facebook HD.
   - **Visual Thumbnail Preview:** Setiap slide foto di daftar unduhan kini memiliki cuplikan gambar visual nyata, nomor urut slide (`Slide X/N`), serta badge resolusi & format.
   - **Interactive Lightbox Modal Preview:** Klik thumbnail mana pun untuk melihat foto ukuran penuh dengan navigasi slide (panah `←` / `→`) dan tombol unduh langsung.
-- 📦 **Tombol Universal "Download All (.ZIP)" (Baru ✨):**
+- 📦 **Tombol Universal "Download All (.ZIP)":**
   - Banner kartu Coquette Pink otomatis tampil jika postingan memiliki lebih dari 1 foto.
   - Pengunduhan paralel cepat multi-threaded (`ThreadPoolExecutor`) dengan penamaan terstruktur rapi (`Judul_01.jpg`, `Judul_02.jpg`, dst.).
   - Mengemas seluruh slide foto ke dalam 1 berkas arsip `.ZIP` terkompresi secara instan dengan *streaming chunk* langsung ke browser.
@@ -89,7 +88,7 @@ Berikut isi script yang ada di dalam `run.bat`:
 @echo off
 title RibbonSave
 echo ===================================================
-echo     🎀 RibbonSave - Starting Services... 🎀
+echo      RibbonSave - Starting Services... 
 echo ===================================================
 echo.
 
@@ -169,7 +168,7 @@ cd ~/VideoMusicDownloader/backend
 pip install -r requirements.txt --break-system-packages
 pm2 start main.py --interpreter python3 --name "ribbonsave-backend"
 
-# 2. Build Frontend (untuk dilayani langsung oleh DocumentRoot Apache2)
+# 2. Build Frontend (untuk dilayani langsung oleh Apache2)
 cd ~/VideoMusicDownloader/frontend
 npm install
 npm run build
@@ -180,4 +179,4 @@ pm2 save
 
 ---
 
-<p align="center">Made with 💖 by RibbonSave 🎀</p>
+<p align="center">Made by RibbonSave 🎀</p>
